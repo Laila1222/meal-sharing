@@ -2,3 +2,68 @@
 * {
   font-family: 'Montserrat', sans-serif;
 }
+
+body{
+    width: 100vw;
+}
+
+ #welcome-background {
+     background-image: url('C:\Users\Lillus\Desktop\nodejsClass\hyf-mealsharing\public\images\background.jpg');
+    /* background-color: beige; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 90vh; 
+ } 
+
+ #welcome-text {
+    /* width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+ }
+
+ #featured-meals {
+ }
+
+/* #stories {
+    background-color: beige;
+} */
+
+.bg-beige {
+    background-color: beige;
+}
+
+#hungry {
+    height: 40vh;
+}
+
+/* #hungry-cover {
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} */
+
+#meals-display-bg, #reviews-display-bg {
+    min-height: 40vh;
+}
+
+.to-the-center {
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#line-between-meals {
+    border: 0;
+    clear:both;
+    display:block;
+    width: 96%;               
+    background-color:rgba(36, 36, 34, 0.609);
+    height: 1px;
+}

@@ -11,22 +11,22 @@ const port = process.env.PORT || 5000;
 // For week4 no need to look into this!
  const path = require('path'); 
 // Serve the built client html
-const buildPath = path.join(__dirname, "../../dist");
+const buildPath = path.join(__dirname, "../../public");
 app.use(express.static(buildPath)); 
+// app.use(express.static('../../public'));
+// app.use(express.static('../../public/images'))
 
 // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended: true }));
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 
+// app.use('/static', express.static(path.join(__dirname, '../../public')))
+
 // If path= meals, use mealsRouter
 router.use('/meals', mealsRouter);
 router.use('/reservations', reservationsRouter);
 router.use('/reviews', reviewsRouter);
-
-
-
-
 
 // path 'api' uses express router
 app.use('/api', router);
