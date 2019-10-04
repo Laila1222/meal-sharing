@@ -13,10 +13,10 @@ const port = process.env.PORT || 5000;
  const path = require('path'); 
 // Serve the built client html
 const buildPath = path.join(__dirname, "../../dist");
+const buildPathAssets = path.join(__dirname, "../../assets");
 app.use(express.static(buildPath)); 
 
-// app.use(express.static('../../public'));
-// // app.use(express.static('../../public/images'))
+app.use('/assets', express.static(buildPathAssets));
 
 // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended: true }));
