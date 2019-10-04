@@ -16,7 +16,7 @@ const buildPath = path.join(__dirname, "../../public");
 app.use(express.static(buildPath)); 
 // Lilla added this, not sure we need it
 // app.use('/public', express.static(path.resolve('./public')));
-// app.use(express.static('../../public'));
+app.use(express.static('../../public'));
 // app.use(express.static('../../public/images'))
 
 // Parse URL-encoded bodies (as sent by HTML forms)
