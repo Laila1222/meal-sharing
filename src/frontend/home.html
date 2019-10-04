@@ -53,6 +53,24 @@
         <button>Create a meal</button>
     </section>
 
+    <label for="title">Name of food</label>
+    <input type="text" id="title">
+
+    <label for="created-after">Meal created after</label>
+    <input type="date">
+
+    <label for="max-price">Maximum price</label>
+    <input type="range" name="max-price" min="0" max="5" id="max-price">
+
+    <label for="limit">Limit number of matches</label>
+    <select name="limit" id="limit">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+    </select>
+
+
+
 
 
 
@@ -70,6 +88,48 @@
             </li>
         </ul>
     </section>
+
+
+    <div class="col">
+        <div id="meal-desc">
+            <img src="" alt="meal-photo">
+        </div>
+        <div id="list-reviews">
+            <ul id="reviews-display-ul" class="list-unstyled container"></ul>
+        </div>
+    </div>  
+    <div class="card col">
+        <div class="card-body">
+            <form action="http://localhost:3000/api/reservation/" method="POST">
+                <div class="form-group">
+                    <h3 id="price"></h3>
+                    <hr>
+                    <label for="date">Date</label>
+                    <input type="date" id="date" name="created_date" class="form-control" aria-describedby="date">
+                </div>
+                <div class="form-group">
+                    <label for="number-of-guests">Guests</label>
+                    <select name="number_of_guests" id="number-of-guests class="form-control"">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your personal message</label>
+                    <textarea name="message" id="message" cols="30" rows="10" placeholder="Write your message here" class="form-control"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Book meal</button>
+                
+            </form>
+            
+
+        </div>
+
+    </div>
     
 
 </body>

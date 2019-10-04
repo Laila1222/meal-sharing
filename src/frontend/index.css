@@ -1,3 +1,4 @@
+/* @import url('bootstrap/dist/css/bootstrap.min.css'); */
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 * {
   font-family: 'Montserrat', sans-serif;
@@ -8,7 +9,7 @@ body{
 }
 
  #welcome-background {
-     background-image: url('C:\Users\Lillus\Desktop\nodejsClass\hyf-mealsharing\public\images\background.jpg');
+      /* background-image: url('../assets/pasta.jpg');  */
     /* background-color: beige; */
     background-position: center;
     background-repeat: no-repeat;
@@ -16,16 +17,19 @@ body{
     height: 90vh; 
  } 
 
- #welcome-text {
+ /* #welcome-text { */
     /* width: 50%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); */
+ /* } */
+
+ #welcome-img {
+     width: 100vw;
  }
 
- #featured-meals {
- }
+
 
 /* #stories {
     background-color: beige;
@@ -47,7 +51,7 @@ body{
     transform: translate(-50%, -50%);
 } */
 
-#meals-display-bg, #reviews-display-bg {
+#meals-display-bg, #reviews-display-bg{
     min-height: 40vh;
 }
 

@@ -1,23 +1,26 @@
+
+
 function homeRouter(req, router) {
   document.body.innerHTML = `
+
+   
   <div id="welcome-background" class="bg-beige">  
     <header class="container"> 
-         
-        <nav class="navbar navbar-light navbar-expand-sm d-flex justify-content-between">
-            <a class="navbar-brand d-block" href="http://localhost:3000/meals">Logo</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse ml-sm-auto" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item "><a class="nav-link" href="">Find a meal</a></li>
-                    <li class="nav-item "><a class="nav-link" href="">Become a host</a></li>
-                </ul>
-            </div>
-        </nav>
-
-     
+       
+      <nav class="navbar navbar-light navbar-expand-sm d-flex justify-content-between">
+          <a class="navbar-brand d-block" href="http://localhost:3000/">Logo</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse ml-sm-auto" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item "><a class="nav-link" href="http://localhost:3000/meals">Find a meal</a></li>
+                  <li class="nav-item "><a class="nav-link" href="http://localhost:3000/add-meal">Become a host</a></li>
+              </ul>
+          </div>
+      </nav>
     </header>
+    
     <div id="welcome-text" class="text-center">
       <div class="to-the-center">    
         <h1>Find new friends and fabulous meals</h1>
@@ -27,6 +30,7 @@ function homeRouter(req, router) {
     </div>
      
   </div>
+  <img src="../assets/pasta.jpg" id="welcome-img">
     
   <section id="featured-meals">
     <div class="container text-center pb-5">
@@ -42,17 +46,20 @@ function homeRouter(req, router) {
     </div>
     
   </section>
-  <section id="hungry">
-    <div id="hungry-cover" class="text-center">
+  <section id="hungry" class="position-relative">
+    <div id="hungry-cover" class="text-center to-the-center">
       <h2 class="pb-3">Hungry?</h2>
       <a class="btn btn-success mx-3" href="http://localhost:3000/meals">Find a meal</a>
-      <a class="btn btn-success mx-3" >Create a meal</a>
+      <a class="btn btn-success mx-3" href="">Create a meal</a>
     </div>
   </section>
           `
 }
 
 homeRouter();
+// const welcomeImg = document.querySelector('#welcome-img');
+// console.log(welcomeImg);
+// welcomeImg.src = "~assets/pasta.jpg";
 
 function renderMeals () {
   fetch('http://localhost:3000/api/meals/')
@@ -69,7 +76,19 @@ function renderMeals () {
     displayMeals.forEach((meal) => {
       const featuredLi = document.createElement('li');
       featuredLi.classList.add("px-2");
-      featuredLi.innerHTML = `<strong>${meal.title}</strong><br>Where: ${meal.location}<br>When:  ${meal.when}`;
+      // featuredLi.classList.add("row");
+      featuredLi.innerHTML = `<div class="card my-3 mx-2">
+                                <img src="" alt="meal-img">
+                                <div class="card-body">
+                                  <h3 class="h4">${meal.title}</h3>
+                                  <p>Location: ${meal.location}</p>
+                                  <p>Date: ${meal.when}</p>
+                                  <p>Price: ${meal.price}</p>
+                                  <a href="http://localhost:3000/reviews/${meal.id}" class="btn btn-success">Book meal</a>
+                                </div>
+                              </div>
+
+      `;
       featuredMealUl.appendChild(featuredLi);
     });
   });
@@ -84,12 +103,20 @@ function renderReviews () {
     review.forEach((review) => {
       const featuredLi = document.createElement('li');
       featuredLi.classList.add("px-2");
-      featuredLi.innerHTML = `<strong>${review.title}</strong><br>${review.description}<br>Stars:  ${review.stars}`;
+      featuredLi.innerHTML = `<div>
+                                  <a href="http://localhost:3000/reviews/${review.meal_id}" >
+                                  <h4 class="text-dark">${review.title}</h4>
+                                  <h5 class="text-dark">${review.description}</h5>
+                                  <p class="text-dark">Stars:  ${review.stars}</p>
+                                  </a>
+                                </div>
+                              `
       featuredStoryUl.appendChild(featuredLi);
     })
   })
 }
-
+{/* <a href='http://localhost:3000/review/${review.meal_id}">
+</a> */}
 renderMeals();
 renderReviews();
 
