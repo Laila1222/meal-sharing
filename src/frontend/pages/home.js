@@ -8,14 +8,14 @@ function homeRouter(req, router) {
     <header class="container"> 
        
       <nav class="navbar navbar-light navbar-expand-sm d-flex justify-content-between">
-          <a class="navbar-brand d-block" href="http://localhost:3000/">Logo</a>
+          <a class="navbar-brand d-block" href="https://hyf-mealsharing.herokuapp.com">Logo</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse ml-sm-auto" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
-                  <li class="nav-item "><a class="nav-link" href="http://localhost:3000/meals">Find a meal</a></li>
-                  <li class="nav-item "><a class="nav-link" href="http://localhost:3000/add-meal">Become a host</a></li>
+                  <li class="nav-item "><a class="nav-link" href="https://hyf-mealsharing.herokuapp.com/meals">Find a meal</a></li>
+                  <li class="nav-item "><a class="nav-link" href="https://hyf-mealsharing.herokuapp.com/add-meal">Become a host</a></li>
               </ul>
           </div>
       </nav>
@@ -25,7 +25,7 @@ function homeRouter(req, router) {
       <div class="to-the-center">    
         <h1>Find new friends and fabulous meals</h1>
         <h2 class="h3 pb-3">Discover home cooking</h2>
-        <a class="btn btn-success" href="http://localhost:3000/meals">Find meals</a>
+        <a class="btn btn-success" href="https://hyf-mealsharing.herokuapp.com/meals">Find meals</a>
       </div>
     </div>
      
@@ -49,7 +49,7 @@ function homeRouter(req, router) {
   <section id="hungry" class="position-relative">
     <div id="hungry-cover" class="text-center to-the-center">
       <h2 class="pb-3">Hungry?</h2>
-      <a class="btn btn-success mx-3" href="http://localhost:3000/meals">Find a meal</a>
+      <a class="btn btn-success mx-3" href="https://hyf-mealsharing.herokuapp.com/meals">Find a meal</a>
       <a class="btn btn-success mx-3" href="">Create a meal</a>
     </div>
   </section>
@@ -62,7 +62,7 @@ homeRouter();
 // welcomeImg.src = "~assets/pasta.jpg";
 
 function renderMeals () {
-  fetch('http://localhost:3000/api/meals/')
+  fetch('https://hyf-mealsharing.herokuapp.com/meals')
   .then(resp => resp.json())
   .then(meal => {
     const featuredMealUl = document.querySelector('#featured-meals-ul');
@@ -84,7 +84,7 @@ function renderMeals () {
                                   <p>Location: ${meal.location}</p>
                                   <p>Date: ${meal.when}</p>
                                   <p>Price: ${meal.price}</p>
-                                  <a href="http://localhost:3000/reviews/${meal.id}" class="btn btn-success">Book meal</a>
+                                  <a href="https://hyf-mealsharing.herokuapp.com/reviews/${meal.id}" class="btn btn-success">Book meal</a>
                                 </div>
                               </div>
 
@@ -95,7 +95,7 @@ function renderMeals () {
 }
 
 function renderReviews () {
-  fetch('http://localhost:3000/api/reviews/')
+  fetch('https://hyf-mealsharing.herokuapp.com/api/reviews/')
   .then(resp => resp.json())
   .then(review => {
     const featuredStoryUl = document.querySelector('#featured-stories-ul');
@@ -104,7 +104,7 @@ function renderReviews () {
       const featuredLi = document.createElement('li');
       featuredLi.classList.add("px-2");
       featuredLi.innerHTML = `<div>
-                                  <a href="http://localhost:3000/reviews/${review.meal_id}" >
+                                  <a href="https://hyf-mealsharing.herokuapp.com/reviews/${review.meal_id}" >
                                   <h4 class="text-dark">${review.title}</h4>
                                   <h5 class="text-dark">${review.description}</h5>
                                   <p class="text-dark">Stars:  ${review.stars}</p>
