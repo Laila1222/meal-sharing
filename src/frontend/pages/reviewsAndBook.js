@@ -75,7 +75,7 @@ function renderHtml () {
 
 renderHtml();
 
-function returnId(req, router) {    
+function renderIdMeal(req, router) {    
     const id = req.param.id;
     const mealSection = document.querySelector('#meal-desc');
     const reviewsUl = document.querySelector('#reviews-display-ul');
@@ -135,4 +135,4 @@ submitBtn.addEventListener('click', () => {
 });
 
 
-export default returnId;
+export default renderIdMeal;

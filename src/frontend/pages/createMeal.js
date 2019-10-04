@@ -22,7 +22,7 @@ function reservationRouter() {
         
         `
 };
-
+reservationRouter();
 
 
 

@@ -1,4 +1,4 @@
-function renderHtmlMeals (req, router) {
+function renderMealsHtml () {
   document.body.innerHTML = `
     <header class="container"> 
         <nav class="navbar navbar-light navbar-expand-sm d-flex justify-content-between">
@@ -14,6 +14,7 @@ function renderHtmlMeals (req, router) {
             </div>
         </nav>
     </header>
+    <button id="hello-btn">hello</button>
     <section id="meals-welcome-text">
       <div id="meals-display-bg" class="bg-beige text-center position-relative mb-3">
         <h1 class="to-the-center" id="find-next-meal">Find your next meal</h1>  
@@ -49,7 +50,7 @@ function renderHtmlMeals (req, router) {
           </div>
           
           <div class="form-group col-auto">
-            <input id="filter-search" type="button" value="Search" class="btn btn-success">
+          <a id="search-btn" type="button" class="btn btn-success">Search</a>
           </div>
         </form>
     </div>
@@ -104,14 +105,20 @@ function renderFiltered () {
   console.log (url);
   renderMeals (url);
 }
-renderHtmlMeals();
+renderMealsHtml();
 renderMeals ('http://localhost:3000/api/meals/');
 
-const titlekj = document.querySelector('#find-next-meal');
-titlekj.addEventListener('click', ()=> {
+
+const filterBtn = document.querySelector('#search-btn');
+filterBtn.addEventListener('click', () => {
+    console.log('hello');
+});
+
+const helloBtn = document.querySelector('#hello-btn');
+helloBtn.addEventListener('click', () => {
   console.log('hello');
 })
 
 
 
-export default renderHtmlMeals;
+export default renderMealsHtml;
