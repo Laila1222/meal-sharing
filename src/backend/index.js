@@ -1,4 +1,4 @@
-const port = process.env.PORT || 5000;
+
 const express = require('express');
 const app = express();
 
@@ -8,23 +8,22 @@ const reservationsRouter = require('./api/reservations.js');
 const reviewsRouter = require('./api/reviews.js');
 const router = express.Router();
 
-
+const port = process.env.PORT || 5000;
 // For week4 no need to look into this!
  const path = require('path'); 
 // Serve the built client html
-const buildPath = path.join(__dirname, "../../public");
+const buildPath = path.join(__dirname, "../../dist");
 app.use(express.static(buildPath)); 
-// Lilla added this, not sure we need it
-// app.use('/public', express.static(path.resolve('./public')));
-app.use(express.static('../../public'));
-// app.use(express.static('../../public/images'))
+
+// app.use(express.static('../../public'));
+// // app.use(express.static('../../public/images'))
 
 // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended: true }));
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 
-// app.use('/static', express.static(path.join(__dirname, '../../public')))
+
 
 // If path= meals, use mealsRouter
 router.use('/meals', mealsRouter);

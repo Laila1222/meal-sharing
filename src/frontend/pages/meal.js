@@ -114,10 +114,7 @@ filterBtn.addEventListener('click', () => {
     console.log('hello');
 });
 
-const helloBtn = document.querySelector('#hello-btn');
-helloBtn.addEventListener('click', () => {
-  console.log('hello');
-})
+
 
 
 
