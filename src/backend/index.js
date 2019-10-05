@@ -1,6 +1,13 @@
 
 const express = require('express');
 const app = express();
+const request = require('request');
+const port = process.env.PORT || 5000;
+const path = require('path'); 
+const apiServerHost = 'https://hyf-mealsharing.herokuapp.com/'
+// Serve the built client html
+const buildPath = path.join(__dirname, "../../dist");
+const buildPathAssets = path.join(__dirname, "../../assets");
 
 
 // Routers
@@ -10,13 +17,13 @@ const reservationsRouter = require('./api/reservations.js');
 const reviewsRouter = require('./api/reviews.js');
 const imagesRouter = require('./api/images.js');
 
+// Proxy
+app.use('/', (req, res) => {
+  const url = apiServerHost + req.url;
+  req.pipe(request(url)).pipe(res);
+});
 
-const port = process.env.PORT || 5000;
-// For week4 no need to look into this!
- const path = require('path'); 
-// Serve the built client html
-const buildPath = path.join(__dirname, "../../dist");
-const buildPathAssets = path.join(__dirname, "../../assets");
+
 app.use(express.static(buildPath)); 
 
 app.use('/assets', express.static(buildPathAssets));
