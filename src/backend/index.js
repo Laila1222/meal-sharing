@@ -1,7 +1,7 @@
 
 const express = require('express');
 const app = express();
-const request = require('request');
+
 
 // Routers
 const router = express.Router();
