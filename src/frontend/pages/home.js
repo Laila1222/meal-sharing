@@ -1,10 +1,5 @@
-
-
-function homeRouter(req, router) {
+function homeRouter (req, router) {
   document.body.innerHTML = `
-
-   
-  
   <header class="container"> 
       
     <nav class="navbar navbar-light navbar-expand-sm d-flex justify-content-between">
@@ -32,8 +27,6 @@ function homeRouter(req, router) {
     </div>
   </div>
      
-  
-    
   <section id="featured-meals">
     <div class="container text-center pb-5">
       <h2 class="py-5">Featured meals</h2>
@@ -54,29 +47,34 @@ function homeRouter(req, router) {
       <a class="btn btn-success mx-3" href="https://hyf-mealsharing.herokuapp.com/meals">Find a meal</a>
       <a class="btn btn-success mx-3" href="">Create a meal</a>
     </div>
-  </div>
-          `
+  </div>`;
 }
 
-homeRouter();
+homeRouter ();
 
 function renderMeals () {
-  fetch('https://hyf-mealsharing.herokuapp.com/api/meals')
-  .then(resp => resp.json())
-  .then(meal => {
-    const featuredMealUl = document.querySelector('#featured-meals-ul');
-    const mealsArray = meal;
-    const displayMeals = [];
-    mealsArray.filter(meal => {
-      if (meal.title === 'Pizza' || meal.title === 'Penne' || meal.title === 'Pasta') {
-        displayMeals.push(meal);
-      }
-    });
-    displayMeals.forEach((meal) => {
-      const featuredLi = document.createElement('li');
-      featuredLi.classList.add("px-2");
-      featuredLi.classList.add("col-md-4");
-      featuredLi.innerHTML = `<div class="card my-3 mx-2">
+  fetch ('https://hyf-mealsharing.herokuapp.com/api/meals')
+    .then (resp => resp.json ())
+    .then (meal => {
+      const featuredMealUl = document.querySelector ('#featured-meals-ul');
+      const mealsArray = meal;
+      const displayMeals = [];
+
+      // Create an array with these 3 food and render them in featured meals
+      mealsArray.filter (meal => {
+        if (
+          meal.title === 'Pizza' ||
+          meal.title === 'Penne' ||
+          meal.title === 'Pasta'
+        ) {
+          displayMeals.push (meal);
+        }
+      });
+      displayMeals.forEach (meal => {
+        const featuredLi = document.createElement ('li');
+        featuredLi.classList.add ('px-2');
+        featuredLi.classList.add ('col-md-4');
+        featuredLi.innerHTML = `<div class="card my-3 mx-2">
                                 
                                 <img id="meal-card-img" class="card-img-top d-block" src="${meal.img}" alt="meal-img">
                                 
@@ -87,37 +85,35 @@ function renderMeals () {
                                   <p class="card-text">Price: ${meal.price}</p>
                                   <a href="https://hyf-mealsharing.herokuapp.com/reviews/${meal.id}" class="btn btn-success">Book meal</a>
                                 </div>
-                              </div>
-
-      `;
-      featuredMealUl.appendChild(featuredLi);
+                              </div>`;
+        featuredMealUl.appendChild (featuredLi);
+      });
     });
-  });
 }
 
+// Fetch and render 3 reviews
 function renderReviews () {
-  fetch('https://hyf-mealsharing.herokuapp.com/api/reviews/')
-  .then(resp => resp.json())
-  .then(review => {
-    const featuredStoryUl = document.querySelector('#featured-stories-ul');
-    review.length = 3;
-    review.forEach((review) => {
-      const featuredLi = document.createElement('li');
-      featuredLi.classList.add("px-2");
-      featuredLi.innerHTML = `<div>
+  fetch ('https://hyf-mealsharing.herokuapp.com/api/reviews/')
+    .then (resp => resp.json ())
+    .then (review => {
+      const featuredStoryUl = document.querySelector ('#featured-stories-ul');
+      review.length = 3;
+      review.forEach (review => {
+        const featuredLi = document.createElement ('li');
+        featuredLi.classList.add ('px-2');
+        featuredLi.innerHTML = `<div>
                                   <a href="https://hyf-mealsharing.herokuapp.com/reviews/${review.meal_id}" >
                                   <h4 class="text-dark">${review.title}</h4>
                                   <h5 class="text-dark">${review.description}</h5>
                                   <p class="text-dark">Stars:  ${review.stars}</p>
                                   </a>
-                                </div>
-                              `
-      featuredStoryUl.appendChild(featuredLi);
-    })
-  })
+                                </div>`;
+        featuredStoryUl.appendChild (featuredLi);
+      });
+    });
 }
 
-renderMeals();
-renderReviews();
+renderMeals ();
+renderReviews ();
 
 export default homeRouter;
