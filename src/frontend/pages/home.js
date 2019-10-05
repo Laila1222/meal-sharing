@@ -61,7 +61,7 @@ function homeRouter(req, router) {
 homeRouter();
 
 function renderMeals () {
-  fetch('http://crossorigin.me/https://hyf-mealsharing.herokuapp.com/api/meals')
+  fetch('https://hyf-mealsharing.herokuapp.com/api/meals')
   .then(resp => resp.json())
   .then(meal => {
     const featuredMealUl = document.querySelector('#featured-meals-ul');
@@ -94,7 +94,7 @@ function renderMeals () {
 }
 
 function renderReviews () {
-  fetch('http://crossorigin.me/https://hyf-mealsharing.herokuapp.com/api/reviews/')
+  fetch('https://hyf-mealsharing.herokuapp.com/api/reviews/')
   .then(resp => resp.json())
   .then(review => {
     const featuredStoryUl = document.querySelector('#featured-stories-ul');
