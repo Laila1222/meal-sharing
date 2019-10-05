@@ -12,7 +12,7 @@ body{
 }
 
  #welcome-text {
-    background-image: url('../assets/2.jpg'); 
+    background-image: url('../assets/home-bg.jpg'); 
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

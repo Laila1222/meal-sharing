@@ -3,10 +3,12 @@ const express = require('express');
 const app = express();
 
 // Routers
-const mealsRouter = require('./api/meals');
+const router = express.Router();
+const mealsRouter = require('./api/meals.js');
 const reservationsRouter = require('./api/reservations.js');
 const reviewsRouter = require('./api/reviews.js');
-const router = express.Router();
+const imagesRouter = require('./api/images.js');
+
 
 const port = process.env.PORT || 5000;
 // For week4 no need to look into this!
@@ -29,6 +31,7 @@ app.use(express.json());
 router.use('/meals', mealsRouter);
 router.use('/reservations', reservationsRouter);
 router.use('/reviews', reviewsRouter);
+router.use('/images', imagesRouter);
 
 // path 'api' uses express router
 app.use('/api', router);
