@@ -85,7 +85,7 @@ function renderMeals (url) {
                                   <p>When: ${meal.when}</p>
                                   <p>Location: ${meal.location}</p>
                                   <p>Stars: ${meal.star}</p> 
-                                  <a href="http://localhost:3000/reviews/${meal.id}" class=" btn btn-warning my-2 w-75">Read more</a>
+                                  <a href="https://hyf-mealsharing.herokuapp.com/reviews/${meal.id}" class=" btn btn-warning my-2 w-75">Read more</a>
                                 </div>
                               </div>
                             `;
@@ -100,12 +100,12 @@ function renderFiltered () {
   const createdAfter = document.querySelector ('#created-after');
   const limit = document.querySelector ('#limit');
 
-  const url = `http://localhost:3000/api/meals?title=${title}&maxPrice=${maxPrice}&createdAfter=${createdAfter}&limit=${limit}`;
+  const url = `https://hyf-mealsharing.herokuapp.com/api/meals?title=${title}&maxPrice=${maxPrice}&createdAfter=${createdAfter}&limit=${limit}`;
   console.log (url);
   renderMeals (url);
 }
 renderMealsHtml();
-renderMeals ('http://localhost:3000/api/meals/');
+renderMeals ('https://hyf-mealsharing.herokuapp.com/api/meals');
 
 
 const filterBtn = document.querySelector('#search-btn');

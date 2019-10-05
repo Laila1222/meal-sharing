@@ -61,7 +61,7 @@ function homeRouter(req, router) {
 homeRouter();
 
 function renderMeals () {
-  fetch('https://hyf-mealsharing.herokuapp.com/meals')
+  fetch('https://hyf-mealsharing.herokuapp.com/api/meals')
   .then(resp => resp.json())
   .then(meal => {
     const featuredMealUl = document.querySelector('#featured-meals-ul');
