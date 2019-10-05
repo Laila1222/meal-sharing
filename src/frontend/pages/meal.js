@@ -2,25 +2,24 @@ function renderMealsHtml () {
   document.body.innerHTML = `
     <header class="container"> 
         <nav class="navbar navbar-light navbar-expand-sm d-flex justify-content-between">
-            <a class="navbar-brand d-block" href="http://localhost:3000/">Logo</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse ml-sm-auto" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item "><a class="nav-link" href="http://localhost:3000/meals">Find a meal</a></li>
-                    <li class="nav-item "><a class="nav-link" href="http://localhost:3000/add-meal">Become a host</a></li>
-                </ul>
-            </div>
+        <a class="d-block text-muted" href="https://hyf-mealsharing.herokuapp.com">MealShare <img src="../assets/logo.png" alt="logo" id="logo"</a>
+            
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+            
+          <div class="collapse navbar-collapse ml-sm-auto" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item "><a class="nav-link" href="http://localhost:3000/meals">Find a meal</a></li>
+                  <li class="nav-item "><a class="nav-link" href="http://localhost:3000/add-meal">Become a host</a></li>
+              </ul>
+          </div>
         </nav>
     </header>
-    <button id="hello-btn">hello</button>
-    <section id="meals-welcome-text">
-      <div id="meals-display-bg" class="bg-beige text-center position-relative mb-3">
-        <h1 class="to-the-center" id="find-next-meal">Find your next meal</h1>  
-      </div>
-      
-    </section>
+
+    <div id="meals-display-bg" class="bg-beige text-center position-relative mb-3">
+      <h1 class="to-the-center text-white" id="find-next-meal">Find your next meal</h1>  
+    </div> 
 
     <section id="search" class="position-relative pd-4">
       <div class="container py-4 ">

@@ -4,33 +4,35 @@ function homeRouter(req, router) {
   document.body.innerHTML = `
 
    
-  <div id="welcome-background" class="bg-beige">  
-    <header class="container"> 
-       
-      <nav class="navbar navbar-light navbar-expand-sm d-flex justify-content-between">
-          <a class="navbar-brand d-block" href="https://hyf-mealsharing.herokuapp.com">Logo</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse ml-sm-auto" id="navbarSupportedContent">
-              <ul class="navbar-nav ml-auto">
-                  <li class="nav-item "><a class="nav-link" href="https://hyf-mealsharing.herokuapp.com/meals">Find a meal</a></li>
-                  <li class="nav-item "><a class="nav-link" href="https://hyf-mealsharing.herokuapp.com/add-meal">Become a host</a></li>
-              </ul>
-          </div>
-      </nav>
-    </header>
-    
-    <div id="welcome-text" class="text-center">
-      <div class="to-the-center">    
-        <h1>Find new friends and fabulous meals</h1>
-        <h2 class="h3 pb-3">Discover home cooking</h2>
-        <a class="btn btn-success" href="https://hyf-mealsharing.herokuapp.com/meals">Find meals</a>
-      </div>
+  
+  <header class="container"> 
+      
+    <nav class="navbar navbar-light navbar-expand-sm d-flex justify-content-between">
+        <a class="d-block text-muted" href="https://hyf-mealsharing.herokuapp.com">MealShare <img src="../assets/logo.png" alt="logo" id="logo"</a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse ml-sm-auto" id="navbarSupportedContent"> 
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item "><a class="nav-link" href="https://hyf-mealsharing.herokuapp.com/meals">Find a meal</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://hyf-mealsharing.herokuapp.com/add-meal">Become a host</a></li>
+          </ul>
+        </div>
+
+    </nav>
+  </header>
+  
+  <div id="welcome-text" class="text-center">
+    <div class="to-the-center">    
+      <h1 class="text-white">Find new friends and fabulous meals</h1>
+      <h2 class="h3 pb-3 text-white">Discover home cooking</h2>
+      <a class="btn btn-success" href="https://hyf-mealsharing.herokuapp.com/meals">Find meals</a>
     </div>
-     
   </div>
-  <img src="../assets/pasta.jpg" id="welcome-img">
+     
+  
     
   <section id="featured-meals">
     <div class="container text-center pb-5">
@@ -46,20 +48,17 @@ function homeRouter(req, router) {
     </div>
     
   </section>
-  <section id="hungry" class="position-relative">
-    <div id="hungry-cover" class="text-center to-the-center">
+  <div id="hungry" class="position-relative">
+    <div id="hungry-cover" class="text-center to-the-center text-white">
       <h2 class="pb-3">Hungry?</h2>
       <a class="btn btn-success mx-3" href="https://hyf-mealsharing.herokuapp.com/meals">Find a meal</a>
       <a class="btn btn-success mx-3" href="">Create a meal</a>
     </div>
-  </section>
+  </div>
           `
 }
 
 homeRouter();
-// const welcomeImg = document.querySelector('#welcome-img');
-// console.log(welcomeImg);
-// welcomeImg.src = "~assets/pasta.jpg";
 
 function renderMeals () {
   fetch('https://hyf-mealsharing.herokuapp.com/meals')

@@ -1,4 +1,3 @@
-/* @import url('bootstrap/dist/css/bootstrap.min.css'); */
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 * {
   font-family: 'Montserrat', sans-serif;
@@ -8,51 +7,56 @@ body{
     width: 100vw;
 }
 
- #welcome-background {
-      /* background-image: url('../assets/pasta.jpg');  */
-    /* background-color: beige; */
+#logo {
+    width: 1.5rem;
+}
+
+ #welcome-text {
+    background-image: url('../assets/2.jpg'); 
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 90vh; 
+    height: 70vh; 
  } 
 
- /* #welcome-text { */
-    /* width: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
- /* } */
+
 
  #welcome-img {
      width: 100vw;
  }
 
+#meals-display-bg {
+    background-image: url('../assets/meals-bg.jpg'); 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 70vh; 
+}
 
-
-/* #stories {
-    background-color: beige;
-} */
 
 .bg-beige {
     background-color: beige;
 }
 
 #hungry {
+    background-image: url('../assets/hungry-bg.jpg'); 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 40vh;
 }
 
-/* #hungry-cover {
-    width: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-} */
 
 #meals-display-bg, #reviews-display-bg{
     min-height: 40vh;
+}
+
+#reviews-display-bg {
+    background-image: url('../assets/reviews-bg.jpg'); 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 70vh; 
 }
 
 .to-the-center {
