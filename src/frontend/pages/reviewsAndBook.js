@@ -1,7 +1,5 @@
-
-
 function renderHtml () {
-    document.body.innerHTML =`
+  document.body.innerHTML = `
     
         <header class="container"> 
             <nav class="navbar navbar-light navbar-expand-sm d-flex justify-content-between">
@@ -13,8 +11,8 @@ function renderHtml () {
             
             <div class="collapse navbar-collapse ml-sm-auto" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item "><a class="nav-link" href="http://localhost:3000/meals">Find a meal</a></li>
-                    <li class="nav-item "><a class="nav-link" href="http://localhost:3000/add-meal">Become a host</a></li>
+                    <li class="nav-item "><a class="nav-link" href="https://hyf-mealsharing.herokuapp.com/meals">Find a meal</a></li>
+                    <li class="nav-item "><a class="nav-link" href="https://hyf-mealsharing.herokuapp.com/add-meal">Become a host</a></li>
                 </ul>
             </div>
 
@@ -30,7 +28,6 @@ function renderHtml () {
         <main class="row py-4">
             <div class="col-sm">
                 <div id="meal-desc">
-                    <img src="" alt="meal-photo">
                 </div>
                 <div id="list-reviews">
                     <ul id="reviews-display-ul" class="list-unstyled container"></ul>
@@ -66,76 +63,75 @@ function renderHtml () {
                             <label for="message">Your personal message</label>
                             <textarea name="message" id="message" cols="30" rows="10" placeholder="Write your message here" class="form-control"></textarea>
                         </div>
-                        <a id="submit-btn" type="button" class="btn btn-success">Book meal</a>
+                        
                     
                     </form>
+                    <button id="submit-btn" class="btn btn-success">Book meal</button>
                 </div>
             </div>
         </main>
         `;
 }
 
+function renderIdMeal (req, router) {
+  renderHtml ();
+  const id = req.param.id;
+  const mealSection = document.querySelector ('#meal-desc');
+  const reviewsUl = document.querySelector ('#reviews-display-ul');
+  const displayPrice = document.querySelector ('#price');
+  const mealIdToOption = document.querySelector ('#meal-id-in-option');
 
-renderHtml();
-
-function renderIdMeal(req, router) {    
-    const id = req.param.id;
-    const mealSection = document.querySelector('#meal-desc');
-    const reviewsUl = document.querySelector('#reviews-display-ul');
-    const displayPrice = document.querySelector('#price');
-    const mealIdToOption = document.querySelector('#meal-id-in-option');
-
-    // Fetch and render corresponding meal
-    fetch(`http://localhost:3000/api/meals/${id}`)
-    .then(resp => resp.json())
-    .then(meal => {
-        console.log(meal);
-        const mealDiv = document.createElement('div');
-        mealDiv.classList.add('container');
-        mealDiv.classList.add('py-2');
-        mealDiv.innerHTML = `
-                            <h2>${meal[0].title}</h2>
-                            <p>${meal[0].description}</p>
-                            <p>Price: ${meal[0].price} /person</p>
-                            <p>When: ${meal[0].when}</p>
-                            <p>Location: ${meal[0].location}</p>`;
-        mealSection.appendChild(mealDiv);
-        displayPrice.innerHTML = `${meal[0].price}Dkk per guest`;
-        mealIdToOption.innerHTML = `${meal[0].id}`;
-    });
-    // Fetch and render reviews
-    fetch(`http://localhost:3000/api/reviews/${id}`)
-    .then(resp => resp.json())
-    .then(reviews => {
-        console.log(reviews);
-        reviews.forEach((review) => {
-            const reviewLi = document.createElement('li');
-            reviewLi.classList.add("row");
-            reviewLi.classList.add("py-2");
-            reviewLi.innerHTML = `
-                            <div class="col-sm">
-                                <h2>${review.title}</h2>
-                                <p>${review.description}</p>
-                                <p>Stars: ${review.stars}</p>
-                            </div>
-                            <div class="col-sm position-relative">
-                                <div>
-                                    <img src="" alt="meal-image">
+  // Fetch and render corresponding meal
+  fetch (`https://hyf-mealsharing.herokuapp.com/api/meals/${id}`)
+    .then (resp => resp.json ())
+    .then (meal => {
+      console.log (meal);
+      const mealDiv = document.createElement ('div');
+      mealDiv.classList.add ('container');
+      mealDiv.classList.add ('py-2');
+      mealDiv.innerHTML = `
+                            <div class="card">
+                                <img class="card-img-top" alt="meal-image" src="${meal[0].img}">
+                                <div class="card-body">
+                                    <h2 class="card-title">${meal[0].title}</h2>
+                                    <p class="card-text">${meal[0].description}</p>
+                                    <p class="card-text">Price: ${meal[0].price} /person</p>
+                                    <p class="card-text">When: ${meal[0].when}</p>
+                                    <p class="card-text">Location: ${meal[0].location}</p>
                                 </div>
-                            </div>;`
-
-            reviewsUl.appendChild(reviewLi);                  
-        }) 
+                            </div>`;
+      mealSection.appendChild (mealDiv);
+      displayPrice.innerHTML = `${meal[0].price}Dkk per guest`;
+      mealIdToOption.innerHTML = `${meal[0].id}`;
     });
-};
-
-
-const submitBtn = document.querySelector('#submit-btn');
-const bookingCard = document.querySelector('#booking-card');
+  // Fetch and render reviews
+  fetch (`https://hyf-mealsharing.herokuapp.com/api/reviews/${id}`)
+    .then (resp => resp.json ())
+    .then (reviews => {
+      console.log (reviews);
+      reviews.forEach (review => {
+        const reviewLi = document.createElement ('li');
+        reviewLi.classList.add ('row');
+        reviewLi.classList.add ('py-2');
+        reviewLi.innerHTML = `
+                            <div class="card">
+                                <div class="card-body">
+                                    <h2 class="card-title">${review.title}</h2>
+                                    <p class="card-text">${review.description}</p>
+                                    <p class="card-text">Stars: ${review.stars}</p>
+                                </div>
+                            </div>`;
+        reviewsUl.appendChild (reviewLi);
+      });
+    });
+}
+renderHtml ();
+// This part is not working
+const submitBtn = document.querySelector ('#submit-btn');
+console.log(submitBtn)
 submitBtn.addEventListener('click', () => {
-    bookingCard.innerHTML = `<p class="text-center">Your booking is sent.<p>`
+    submitBtn.innerHTML = `<p class="text-center">Your booking is sent.<p>`
     console.log('hello');
 });
-
 
 export default renderIdMeal;

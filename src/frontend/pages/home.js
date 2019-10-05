@@ -37,7 +37,7 @@ function homeRouter(req, router) {
   <section id="featured-meals">
     <div class="container text-center pb-5">
       <h2 class="py-5">Featured meals</h2>
-      <ul id="featured-meals-ul" class="d-flex align-content-center flex-wrap justify-content-around list-unstyled "></ul>
+      <ul id="featured-meals-ul" class="row list-unstyled"></ul>
     </div>
   </section>
   
@@ -75,14 +75,16 @@ function renderMeals () {
     displayMeals.forEach((meal) => {
       const featuredLi = document.createElement('li');
       featuredLi.classList.add("px-2");
-      // featuredLi.classList.add("row");
+      featuredLi.classList.add("col-md-4");
       featuredLi.innerHTML = `<div class="card my-3 mx-2">
-                                <img src="" alt="meal-img">
+                                
+                                <img id="meal-card-img" class="card-img-top d-block" src="${meal.img}" alt="meal-img">
+                                
                                 <div class="card-body">
-                                  <h3 class="h4">${meal.title}</h3>
-                                  <p>Location: ${meal.location}</p>
-                                  <p>Date: ${meal.when}</p>
-                                  <p>Price: ${meal.price}</p>
+                                  <h3 class="h4 card-title">${meal.title}</h3>
+                                  <p class="card-text">Location: ${meal.location}</p>
+                                  <p class="card-text">Date: ${meal.when}</p>
+                                  <p class="card-text">Price: ${meal.price}</p>
                                   <a href="https://hyf-mealsharing.herokuapp.com/reviews/${meal.id}" class="btn btn-success">Book meal</a>
                                 </div>
                               </div>
@@ -114,8 +116,7 @@ function renderReviews () {
     })
   })
 }
-{/* <a href='http://localhost:3000/review/${review.meal_id}">
-</a> */}
+
 renderMeals();
 renderReviews();
 

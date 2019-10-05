@@ -57,7 +57,7 @@ function renderMealsHtml () {
     <section class="bg-beige">
 
       <div id="display-meals" class="container">
-        <ul id="meals-display-ul" class="row justify-content-center list-unstyled py-5">
+        <ul id="meals-display-ul" class="row list-unstyled py-5">
         </ul>
       </div>
 
@@ -73,19 +73,18 @@ function renderMeals (url) {
     const mealsUL = document.querySelector ('#meals-display-ul');
     meals.forEach (meal => {
       const mealsLi = document.createElement ('li');
-      mealsLi.classList.add ('col-auto');
+      mealsLi.classList.add ('col-md-4');
       // mealsLi.classList.add("set-max-width");
       mealsLi.classList.add ('py-2');
       mealsLi.innerHTML = ` <div class="card">
-                                <img src="${meal.img}" alt="meal-image">
+                                <img class="card-img-top d-block" src="${meal.img}" alt="meal-image">
                                 <div class="card-body">
-                                  <h2 class="h5">${meal.title}</h2>
-                                  <p>${meal.description}</p>
-                                  <p>Price: ${meal.price} /person</p>
-                                  <p>When: ${meal.when}</p>
-                                  <p>Location: ${meal.location}</p>
-                                  <p>Stars: ${meal.star}</p> 
-                                  <a href="https://hyf-mealsharing.herokuapp.com/reviews/${meal.id}" class=" btn btn-warning my-2 w-75">Read more</a>
+                                  <h2 class="h5 card-title">${meal.title}</h2>
+                                  <p class="card-text">${meal.description}</p>
+                                  <p class="card-text">Price: ${meal.price} per person</p>
+                                  <p class="card-text">When: ${meal.when}</p>
+                                  <p class="card-text">Location: ${meal.location}</p>
+                                  <a href="https://hyf-mealsharing.herokuapp.com/reviews/${meal.id}" class="btn btn-warning my-2 w-75">Read more</a>
                                 </div>
                               </div>
                             `;
