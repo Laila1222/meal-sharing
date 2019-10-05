@@ -18,10 +18,10 @@ const reviewsRouter = require('./api/reviews.js');
 const imagesRouter = require('./api/images.js');
 
 // Proxy
-app.use('/', (req, res) => {
-  const url = apiServerHost + req.url;
-  req.pipe(request(url)).pipe(res);
-});
+// app.use('/', (req, res) => {
+//   const url = apiServerHost + req.url;
+//   req.pipe(request(url)).pipe(res);
+// });
 
 
 app.use(express.static(buildPath)); 
