@@ -23,57 +23,53 @@ function renderHtml () {
             <h1 class="to-the-center" >Reviews</h1>  
         </div>  
 
-        <main class="row py-4">
-            <div class="col-sm">
+        <main class="container">
+            <div class="row py-4 justify-content-center d-flex">
+                <div class="col-sm">
 
-                <div id="meal-desc">
-                </div>
+                    <div id="meal-desc">
+                    </div>
 
-                <div id="list-reviews">
-                    <ul id="reviews-display-ul" class="list-unstyled container"></ul>
-                </div>
-                
-            </div>  
-
-            <div class="card col-sm ">
-                <div class="card-body" id="booking-card">
-                    <form action="#" method="POST">
-                        
-                        <div class="form-group">
-                            <h2 class="h4" id="price"></h2>
-                            <hr>
-                            <label for="date">Date</label>
-                            <input type="date" id="date" name="created_date" class="form-control" aria-describedby="date">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="selected-meal">Meal ID</label>
-                            <select name="meal_id" id="selected-meal" class="form-control">
-                                <option id="meal-id-in-option" value="meal_id"></option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="number-of-guests">Guests</label>
-                            <select name="number_of_guests" id="number-of-guests class="form-control"">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Your personal message</label>
-                            <textarea name="message" id="message" cols="30" rows="10" placeholder="Write your message here" class="form-control"></textarea>
-                        </div>
-
-                        <button id="submit-btn" class="btn btn-success">Book meal</button>
-
-                    </form>
+                    <div id="list-reviews">
+                        <ul id="reviews-display-ul" class="list-unstyled container"></ul>
+                    </div>
                     
+                </div>  
+
+                
+                <div class="card col-sm">
+                    <div class="card-body" id="booking-card">
+                        <form action="#" method="POST">
+                            
+                            <div class="form-group">
+                                <h2 class="h4" id="price"></h2>
+                                <hr>
+                                <label for="date">Date</label>
+                                <input type="date" id="date" name="created_date" class="form-control" aria-describedby="date">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="selected-meal">Meal ID</label>
+                                <select name="meal_id" id="selected-meal" class="form-control">
+                                    <option id="meal-id-in-option" value="meal_id"></option>
+                                </select>
+                            </div>
+
+                            <div id="number-of-guests" class="form-group">
+                                <label for="number-of-guests">Guests</label>
+                                
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Your personal message</label>
+                                <textarea name="message" id="message" cols="30" rows="10" placeholder="Write your message here" class="form-control"></textarea>
+                            </div>
+
+                            <button id="submit-btn" class="btn btn-success">Book meal</button>
+
+                        </form>
+                        
+                    </div>
                 </div>
             </div>
         </main>`;
@@ -94,7 +90,7 @@ function renderIdMeal (req, router) {
     .then (meal => {
       console.log (meal);
       const mealDiv = document.createElement ('div');
-      mealDiv.classList.add ('container');
+    //   mealDiv.classList.add ('container');
       mealDiv.classList.add ('py-2');
       mealDiv.innerHTML = `<div class="card">
                                 <img class="card-img-top" alt="meal-image" src="${meal[0].img}">
@@ -104,6 +100,8 @@ function renderIdMeal (req, router) {
                                     <p class="card-text">Price: ${meal[0].price} /person</p>
                                     <p class="card-text">When: ${meal[0].when}</p>
                                     <p class="card-text">Location: ${meal[0].location}</p>
+                                    <p class="card-text">Maximum number of guests: ${meal[0].max_reservations}</p>
+                                    <p class="card-text">Available places for booking: 
                                 </div>
                             </div>`;
       mealSection.appendChild (mealDiv);
@@ -130,6 +128,13 @@ function renderIdMeal (req, router) {
         reviewsUl.appendChild (reviewLi);
       });
     });
+
+    // Fetch reservations
+    // fetch(`https://hyf-mealsharing.herokuapp.com/api/reservations/${id}`)
+    // .then(resp => resp.json())
+    // .then(reservations => {
+
+    // })
 }
 
 renderHtml ();

@@ -8,6 +8,7 @@ const mealsRouter = require ('./api/meals.js');
 const reservationsRouter = require ('./api/reservations.js');
 const reviewsRouter = require ('./api/reviews.js');
 const imagesRouter = require ('./api/images.js');
+const reservationsLeftRouter = require('./api/reservationsLeft.js');
 
 //Port
 const port = process.env.PORT || 5000;
@@ -31,6 +32,7 @@ router.use ('/meals', mealsRouter);
 router.use ('/reservations', reservationsRouter);
 router.use ('/reviews', reviewsRouter);
 router.use ('/images', imagesRouter);
+router.use ('/reservations-left', reservationsLeftRouter);
 
 app.use ('/api', router);
 

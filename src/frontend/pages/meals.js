@@ -24,7 +24,7 @@ function renderMealsHtml () {
     <section id="search" class="position-relative pd-4">
       <div class="container py-4 ">
         <h3 class="text-center pb-3">Search for a meal - Feature is not working at the moment!</h3>
-        <form class="w-auto row  justify-content-center">
+        <div id="search-form" class="w-auto row  justify-content-center">
           
           <div class="form-group col-auto ">
             <label for="title">Name of food</label>
@@ -37,7 +37,13 @@ function renderMealsHtml () {
         
           <div class="form-group col-auto ">
             <label for="max-price">Maximum price</label>
-            <input type="range" name="max-price" min="0" max="5" id="max-price" >
+            <select id="max-price" name="maxPrice" class="form-control">
+              <option value="50">50 Dkk</option>
+              <option value="100">100 Dkk</option>
+              <option value="200">200 Dkk</option>
+              <option value="300">300 Dkk</option>
+              <option value="400">400 Dkk</option>
+            </select>
           </div>
 
           <div class="form-group col-auto">
@@ -50,10 +56,10 @@ function renderMealsHtml () {
           </div>
           
           <div class="form-group col-auto">
-          <a id="search-btn" type="button" class="btn btn-success">Search</a>
+          <button id="search-btn" class="btn btn-success">Search</button>
           </div>
 
-        </form>
+        </div>
     </div>
     </section>
 
@@ -75,7 +81,7 @@ function renderMeals (url) {
       const mealsLi = document.createElement ('li');
       mealsLi.classList.add ('col-md-4');
       mealsLi.classList.add ('py-2');
-      mealsLi.innerHTML = ` <div class="card">
+      mealsLi.innerHTML = ` <div class="card shadow p-3 mb-5 bg-white rounded h-100">
                                 <img class="card-img-top d-block" src="${meal.img}" alt="meal-image">
                                 <div class="card-body">
                                   <h2 class="h5 card-title">${meal.title}</h2>
@@ -91,18 +97,38 @@ function renderMeals (url) {
   });
 }
 
+
+
 // Search function - still working on it!
-function renderFiltered () {
-  const title = document.querySelector ('#title').value;
-  const maxPrice = document.querySelector ('#max-price').value;
-  const createdAfter = document.querySelector ('#created-after');
-  const limit = document.querySelector ('#limit');
-  const url = `https://hyf-mealsharing.herokuapp.com/api/meals?title=${title}&maxPrice=${maxPrice}&createdAfter=${createdAfter}&limit=${limit}`;
-  console.log (url);
-  renderMeals (url);
-}
+
+  
+//   fetch('/api/meals', {
+//     method: 'GET',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({
+//       "title": title.value,
+//       "created_date": createdAfter.value,
+//       "price": maxPrice.value,
+//       "limit": limit.value
+//     })
+//   })
+  
+// }
 
 renderMealsHtml ();
 renderMeals ('https://hyf-mealsharing.herokuapp.com/api/meals');
+
+const searchButton = document.querySelector('#search-btn');
+searchButton.addEventListener('click', () => {
+  // const title = document.querySelector ('#title');
+  // const maxPrice = document.querySelector ('#max-price');
+  // const createdAfter = document.querySelector ('#created-after');
+  // const limit = document.querySelector ('#limit');
+  // const url = `https://hyf-mealsharing.herokuapp.com/api/meals?title=${title.value}&maxPrice=${maxPrice.value}&createdAfter=${createdAfter}&limit=${limit}`;
+  // console.log(url);
+  console.log('hello');
+})
 
 export default renderMealsHtml;

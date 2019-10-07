@@ -74,11 +74,11 @@ function renderMeals () {
         const featuredLi = document.createElement ('li');
         featuredLi.classList.add ('px-2');
         featuredLi.classList.add ('col-md-4');
-        featuredLi.innerHTML = `<div class="card my-3 mx-2">
+        featuredLi.innerHTML = `<div class="card my-3 mx-2 shadow p-3 mb-5 bg-white rounded">
                                 
                                 <img id="meal-card-img" class="card-img-top d-block" src="${meal.img}" alt="meal-img">
                                 
-                                <div class="card-body">
+                                <div class="card-body ">
                                   <h3 class="h4 card-title">${meal.title}</h3>
                                   <p class="card-text">Location: ${meal.location}</p>
                                   <p class="card-text">Date: ${meal.when}</p>

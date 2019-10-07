@@ -36,6 +36,11 @@ router.get ('/', (req, res) => {
       const dateQuery = `created_date > ${date}`;
       conditions.push (dateQuery);
     }
+    // if (availableReservations) {
+    //   const availableReservQuery = `inner join reservation on meal.id = reservation.meal_id where meal.max_reservations > reservation.number_of_guests;`
+    //   return availableReservQuery;
+    // }
+  // };
 
     // Modify queries according to array length
     if (conditions.length === 1) {
@@ -150,9 +155,4 @@ router.get ('/', (req, res) => {
 
 module.exports = router;
 
-  // const returnAvailableReserv = (availableReservations) => {
-  //   if (availableReservations === true) {
-  //     const availableReservQuery = `inner join reservation on meal.id = reservation.meal_id where meal.max_reservations > reservation.number_of_guests;`
-  //     return availableReservQuery;
-  //   }
-  // };
+ 
