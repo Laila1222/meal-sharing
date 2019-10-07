@@ -74,7 +74,7 @@ function renderMeals () {
         const featuredLi = document.createElement ('li');
         featuredLi.classList.add ('px-2');
         featuredLi.classList.add ('col-md-4');
-        featuredLi.innerHTML = `<div class="card my-3 mx-2 shadow p-3 mb-5 bg-white rounded">
+        featuredLi.innerHTML = `<div class="card my-3 mx-2 shadow p-3 mb-5 bg-white rounded h-100">
                                 
                                 <img id="meal-card-img" class="card-img-top d-block" src="${meal.img}" alt="meal-img">
                                 
