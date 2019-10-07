@@ -39,7 +39,7 @@ function renderHtml () {
                 
                 <div class="card col-sm">
                     <div class="card-body" id="booking-card">
-                        <form action="#" method="POST">
+                        <form id="form">
                             
                             <div class="form-group">
                                 <h2 class="h4" id="price"></h2>
@@ -57,6 +57,7 @@ function renderHtml () {
 
                             <div id="number-of-guests" class="form-group">
                                 <label for="number-of-guests">Guests</label>
+                                <input id="number-of-guests" class="form-control">
                                 
                             </div>
 
@@ -65,7 +66,7 @@ function renderHtml () {
                                 <textarea name="message" id="message" cols="30" rows="10" placeholder="Write your message here" class="form-control"></textarea>
                             </div>
 
-                            <button id="submit-btn" class="btn btn-success">Book meal</button>
+                            <input type="button" id="submit-btn" value="Send" class="btn btn-success">
 
                         </form>
                         
@@ -129,10 +130,7 @@ function renderIdMeal (req, router) {
       });
     });
 
-    // Fetch reservations
-    // fetch(`https://hyf-mealsharing.herokuapp.com/api/reservations/${id}`)
-    // .then(resp => resp.json())
-    // .then(reservations => {
+    
 
     // })
 }
@@ -141,10 +139,41 @@ renderHtml ();
 
 // This part is not working - I am still working on it
 const submitBtn = document.querySelector ('#submit-btn');
+const form = document.querySelector('#form');
 console.log(submitBtn)
 submitBtn.addEventListener('click', () => {
-    submitBtn.innerHTML = `<p class="text-center">Your booking is sent.<p>`
     console.log('hello');
+    const numberOfGuests = document.querySelector('#number-of-guests');
+    const mealId = document.querySelector('#meal-id-in-option');
+    const createdDate = new Date().getDate();
+
+    if (name.value !== '' && phone.value !== '' && email.value !== '') {
+        fetch('/api/reservations/', {
+            method: 'POST', 
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              "number_of_guests": numberOfGuests.value,
+              "meal_id": mealId.value,
+              "created_date": createdDate
+            })
+             })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                form.innerHTML = `        
+            Number of your reservation is ${data.insertId}. </br>
+            We willl contact you very soon.
+            `;
+                
+            })
+    } else {
+        form.innerHTML = `        
+        Please, fill correctly the form.`;
+    }
+    
 });
+
 
 export default renderIdMeal;
