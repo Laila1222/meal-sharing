@@ -18,9 +18,11 @@ const mealsHtml = `
   <div id="meals-display-bg" class="bg-beige text-center position-relative mb-3">
     <h1 class="to-the-center text-white" id="find-next-meal">Find your next meal</h1>  
   </div> 
+  
+  <!--  I am working on this section
   <section id="search" class="position-relative pd-4">
     <div class="container py-4 ">
-      <h3 class="text-center pb-3">Search for a meal - Feature is not working at the moment!</h3>
+      <h3 class="text-center pb-3">Search for a meal - Feature is in development!</h3>
       <div id="search-form" class="w-auto row  justify-content-center">
         
         <div class="form-group col-auto ">
@@ -56,7 +58,8 @@ const mealsHtml = `
         </div>
       </div>
   </div>
-  </section>
+  </section>              -->
+
   <section class="bg-beige">
     <div id="display-meals" class="container">
       <ul id="meals-display-ul" class="row list-unstyled py-5">
@@ -88,7 +91,7 @@ function renderMeals (url) {
   });
 }
 
-// Connection to backend is not working properly yet - still working on it.
+// Still working on this part
 function buttonEvent () {
   const searchButton = document.querySelector ('#search-btn');
   searchButton.addEventListener ('click', () => {
@@ -98,7 +101,6 @@ function buttonEvent () {
     const limit = document.querySelector ('#limit');
     const url = `/api/meals?title=${title.value}&maxPrice=${maxPrice.value}&createdAfter=${createdAfter}&limit=${limit}`;
     renderMeals (url);
-    console.log ('hello');
   });
 }
 

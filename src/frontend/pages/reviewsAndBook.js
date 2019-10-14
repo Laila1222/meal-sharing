@@ -135,32 +135,34 @@ function submitEvent () {
   const submitBtn = document.querySelector ('#submit-btn');
   submitBtn.addEventListener ('click', event => {
     event.preventDefault ();
-    console.log ('from button');
-    const form = document.querySelector ('#form');
+    const bookingCard = document.querySelector('#booking-card');
+    bookingCard.innerHTML = '<p>Thank you for your order.<br>We will contact you soon.</p>'
 
-    const numberOfGuests = document.querySelector ('#number-of-guests');
-    const mealId = document.querySelector ('#meal-id-in-option');
-    const createdDate = new Date ().getDate ();
+    // Still working on this part
+    // const form = document.querySelector ('#form');
+    // const numberOfGuests = document.querySelector ('#number-of-guests');
+    // const mealId = document.querySelector ('#meal-id-in-option');
+    // const createdDate = new Date ().getDate ();
 
-    fetch ('/api/reservations/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify ({
-        number_of_guests: numberOfGuests.value,
-        meal_id: mealId.value,
-        created_date: createdDate,
-      }),
-    })
-      .then (res => res.json ())
-      .then (data => {
-        console.log (data);
-        form.innerHTML = `        
-                Number of your reservation is ${data.insertId}. </br>
-                We willl contact you very soon.
-                `;
-      });
+    // fetch ('/api/reservations/', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify ({
+    //     number_of_guests: numberOfGuests.value,
+    //     meal_id: mealId.value,
+    //     created_date: createdDate,
+    //   }),
+    // })
+    //   .then (res => res.json ())
+    //   .then (data => {
+    //     console.log (data);
+    //     form.innerHTML = `        
+    //             Number of your reservation is ${data.insertId}. </br>
+    //             We willl contact you very soon.
+    //             `;
+      // });
   });
 }
 
