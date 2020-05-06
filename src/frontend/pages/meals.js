@@ -1,7 +1,7 @@
 const mealsHtml = `
   <header class="container"> 
       <nav class="navbar navbar-light navbar-expand-sm d-flex justify-content-between">
-      <a class="d-block text-muted" href="/home">MealShare <img src="../assets/logo.png" alt="logo" id="logo"</a>
+      <a class="d-block text-muted">MealShare <img src="../assets/logo.png" alt="logo" id="logo"</a>
           
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>

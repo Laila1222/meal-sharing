@@ -15,7 +15,7 @@
     "delete-nm": "rm -rf node_modules/",
     "delete-pl": "rm ./package-lock.json"
   },
-  "author": "Benjamin Hughes",
+  "author": "Lilla Kőrösi",
   "license": "MIT",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.17",

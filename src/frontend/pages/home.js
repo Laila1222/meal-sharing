@@ -2,7 +2,7 @@ const htmlElements = `
 <header class="container"> 
     
   <nav class="navbar navbar-light navbar-expand-sm d-flex justify-content-between">
-      <a class="d-block text-muted" href="/home">MealShare <img src="../assets/logo.png" alt="logo" id="logo"</a>
+      <a class="d-block text-muted" <img src="../assets/logo.png" alt="logo" id="logo"</a>
       
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -73,7 +73,7 @@ function renderMeals () {
                                 <img id="meal-card-img" class="card-img-top d-block" src="${meal.img}" alt="meal-img">
                                 
                                 <div class="card-body ">
-                                  <h3 class="h4 card-title">${meal.title}</h3>
+                                  <h3 class="h4 card-title pt-4">${meal.title}</h3>
                                   <p class="card-text">Location: ${meal.location}</p>
                                   <p class="card-text">Date: ${meal.when}</p>
                                   <p class="card-text">Price: ${meal.price}</p>
